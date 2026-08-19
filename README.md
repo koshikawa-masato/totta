@@ -47,3 +47,7 @@ project.yml   xcodegen 定義
 ## 詳細
 
 操作手順・iPhone での使い方・撮影のコツ・補正/OCR/書き出しの実装メモは **[USAGE.md](USAGE.md)** を参照してください。
+
+## ライセンス
+
+[MIT License](LICENSE)
