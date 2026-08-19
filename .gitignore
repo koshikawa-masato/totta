@@ -1,0 +1,9 @@
+.DS_Store
+/Totta.xcodeproj
+/build
+/DerivedData
+/Core/.build
+/Core/.swiftpm
+xcuserdata/
+*.xcuserstate
+/books

@@ -1,0 +1,86 @@
+name: Totta
+options:
+  bundleIdPrefix: com.koshikawa
+  createIntermediateGroups: true
+  deploymentTarget:
+    macOS: "14.0"
+    iOS: "17.0"
+  xcodeVersion: "26.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    SWIFT_STRICT_CONCURRENCY: minimal
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    GENERATE_INFOPLIST_FILE: NO
+packages:
+  TottaCore:
+    path: Core
+targets:
+  Totta:
+    type: application
+    platform: macOS
+    sources:
+      - path: App/Totta
+    dependencies:
+      - package: TottaCore
+        product: TottaCore
+    info:
+      path: App/Info/Info-macOS.plist
+      properties:
+        CFBundleDisplayName: totta
+        CFBundleName: totta
+        LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
+        NSHighResolutionCapable: true
+        NSCameraUsageDescription: 書籍のページをカメラから直接取り込むために使用します。映像は保存されません。
+        NSHumanReadableCopyright: ""
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.koshikawa.totta
+        PRODUCT_NAME: totta
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        ENABLE_HARDENED_RUNTIME: NO
+        ENABLE_APP_SANDBOX: NO
+        COMBINE_HIDPI_IMAGES: YES
+  Totta-iOS:
+    type: application
+    platform: iOS
+    sources:
+      - path: App/Totta
+    dependencies:
+      - package: TottaCore
+        product: TottaCore
+    info:
+      path: App/Info/Info-iOS.plist
+      properties:
+        CFBundleDisplayName: totta
+        CFBundleName: totta
+        NSCameraUsageDescription: 書籍のページをカメラから直接取り込むために使用します。映像は保存されません。
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        UISupportedInterfaceOrientations~ipad: [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        UIRequiresFullScreen: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.koshikawa.totta.ios
+        PRODUCT_NAME: totta
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 8JN36X5T3B
+        INFOPLIST_KEY_UIStatusBarStyle: UIStatusBarStyleDefault
+schemes:
+  Totta:
+    build:
+      targets:
+        Totta: all
+    run:
+      config: Debug
+  Totta-iOS:
+    build:
+      targets:
+        Totta-iOS: all
+    run:
+      config: Debug
